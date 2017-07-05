@@ -17,14 +17,14 @@ public class MainView extends JFrame implements Observer {
         this.setSize(800, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //加了panel和button
+        //panel amd button
         JPanel panel = new JPanel();
         JButton button = new JButton("Start New Game");
 
-        //给button加mouse event
-         MyMouseAdapter newMouseAdapter = new MyMouseAdapter(model); //这里多加了一个model，不知道正确？？
+        //button mouse event
+         MyMouseAdapter newMouseAdapter = new MyMouseAdapter(model); 
         button.addMouseListener(newMouseAdapter);
-        //button.addMouseMotionListener(newAdapter); 这个必要？？？？？
+        //button.addMouseMotionListener(newAdapter); 
 
         // add panel to the window
         panel.add(button);
@@ -39,7 +39,7 @@ public class MainView extends JFrame implements Observer {
 
 
 
-    //create a custom adapter from MouseAdapter base class，暂时先不用controller
+    //create a custom adapter from MouseAdapter base class
     static class MyMouseAdapter extends MouseAdapter {
         Model model;
         MyMouseAdapter(Model model) {
