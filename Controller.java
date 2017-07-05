@@ -15,7 +15,7 @@ class Controller implements MouseListener, KeyListener {
     // MouseListener Part
     public void mouseClicked(MouseEvent e) {
         System.exit(1);
-        //改
+
     }
     public void mouseEntered(MouseEvent e) { }
     public void mouseExited(MouseEvent e) { }

@@ -11,8 +11,8 @@ import java.util.LinkedList;
 import static java.awt.image.BufferedImage.TYPE_3BYTE_BGR;
 import java.awt.event.KeyListener;
 
-//加所有obstical
-//加所有飞机
+//obstical
+//aircraft
 interface Observer {
     void update(Object observable);
 
@@ -21,27 +21,26 @@ interface Observer {
 class GamePlay extends JComponent implements Observer{
     private int FPS = 30;
     private Timer animationTimer;
-    //在这里存放list of obstacles
+    //list of obstacles
     private LinkedList<Displayable> Obstacles = new LinkedList<Displayable>();
 
     private Player MyPlayer = new Player(400, 300, 50, this);
-    //目前obs是事先定好的
     private Obstacle Obs1 = new Obstacle(820, 0, 850, 200);
     private Obstacle Obs2 = new Obstacle(900, 300, 920, 600);
 
     public GamePlay(Model model) {
-        super(); //作用？？ 最后可以删掉！！！！！！！！！！！！！！！！！！！！！！！！
-        //之后改为从file里面读取，决定player和obs的位置
+        super(); 
+        //read from files later
         this.Obstacles.add(this.Obs1);
         this.Obstacles.add(this.Obs2);
 
-        //整个JComponent需要加KeyListener, 暂时先不用controller
+        //KeyListener
         this.setFocusable(true);
         this.requestFocusInWindow();
         MyKeyListener newKeyListener = new MyKeyListener();
         this.addKeyListener(newKeyListener);
 
-        //动画更新part
+        //Animation Part
         this.animationTimer = new Timer(1000/this.FPS, event -> {
             this.handleAnimation();
             this.repaint(); // note that we call repaint, not paintComponent
@@ -51,7 +50,6 @@ class GamePlay extends JComponent implements Observer{
 
     @Override
     protected void paintComponent(Graphics g) {
-        // 作用
         Image dBuff = new BufferedImage(this.getWidth(), this.getHeight(), TYPE_3BYTE_BGR);
         Graphics gBuff = dBuff.getGraphics();
         gBuff.setClip(0, 0, this.getWidth(), this.getHeight());
@@ -65,13 +63,13 @@ class GamePlay extends JComponent implements Observer{
     }
 
     private void handleAnimation() {
-        this.MyPlayer.move();//不知道对不对
+        this.MyPlayer.move();
         this.Obs1.move();
         this.Obs2.move();
     }
 
 
-    //加keylistener控制player
+    //Implements KeyListener
     public class MyKeyListener implements KeyListener {
         public void keyPressed (KeyEvent e) {
         }
@@ -82,7 +80,7 @@ class GamePlay extends JComponent implements Observer{
     }
 
     public void update(Object observable) {
-        //什么也不干
+        //nothing
     }
 }
 

@@ -20,7 +20,7 @@ class Obstacle implements Displayable {
         this.bry = bry;
     }
 
-    //暂时没有写move， 之后写
+    // can be adjust later
     public void move () {
         this.tlx -= 5;
         this.brx -= 5;
@@ -43,7 +43,6 @@ class Player implements  Displayable {
         this.parent = parent;
     }
 
-    //暂时没有写move， 之后写
     public void move () {
 
     }
@@ -52,9 +51,8 @@ class Player implements  Displayable {
         return new Point(this.x + this.radius, this.y + this.radius);
     }
 
-    //先暂定蓝色的player
     public void paint(Graphics g) {
-        g.setColor(Color.red);
+        g.setColor(Color.blue);
         g.fillOval(this.x, this.y, 2 * this.radius, 2 * this.radius);
     }
 }
